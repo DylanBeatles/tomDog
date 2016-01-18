@@ -5,6 +5,7 @@
 package server;
 
 import request.HttpRequest;
+import response.HttpResponse;
 
 /**
  * 
@@ -17,7 +18,7 @@ public class ServletSourceProcessor implements SourceProcessor {
      * @see server.SourceProcessor#process(request.HttpRequest)
      */
     @Override
-    public void process(HttpRequest request) {
+    public void process(HttpRequest request, HttpResponse response) {
     }
 
 }

@@ -7,7 +7,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import request.HttpRequest;
-import response.Response;
+import response.HttpResponse;
 import connector.RequestParser;
 import constant.Constants;
 
@@ -75,9 +75,9 @@ public class HttpServer {
      */
     private void createAndSetResponse(Socket socket, HttpRequest request) throws IOException {
         // create Response object
-        Response response = new Response(socket.getOutputStream());
-        response.setRequest(request);
-        response.sendStaticResource();
+        HttpResponse response = new HttpResponse(request, socket.getOutputStream());
+        
+        request.getSourceProcessor().process(request, response);
     }
 
     /**

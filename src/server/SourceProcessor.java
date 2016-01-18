@@ -5,6 +5,7 @@
 package server;
 
 import request.HttpRequest;
+import response.HttpResponse;
 
 /**
  * 
@@ -17,5 +18,5 @@ public interface SourceProcessor {
      * 
      * @param request
      */
-    public void process(HttpRequest request);
+    public void process(HttpRequest request, HttpResponse response);
 }
