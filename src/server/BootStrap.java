@@ -10,7 +10,7 @@ import model.request.HttpRequest;
 import model.response.HttpResponse;
 import parser.RequestParser;
 
-public class HttpServer {
+public class BootStrap {
 
     // shutdown command
     private static final String SHUTDOWN_COMMAND = "/SHUTDOWN";
@@ -19,8 +19,8 @@ public class HttpServer {
     private boolean             shutdown         = false;
 
     public static void main(String[] args) {
-        HttpServer server = new HttpServer();
-        server.await();
+        BootStrap bootStrap = new BootStrap();
+        bootStrap.await();
     }
 
     public void await() {

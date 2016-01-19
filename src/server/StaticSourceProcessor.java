@@ -28,7 +28,7 @@ public class StaticSourceProcessor implements SourceProcessor {
         byte[] bytes = new byte[Constants.RESPONSE_BUFFER_SIZE];
         FileInputStream fis = null;
         try {
-            File file = new File(HttpServer.WEB_ROOT, request.getUri());
+            File file = new File(BootStrap.WEB_ROOT, request.getUri());
             if (file.exists()) {
                 fis = new FileInputStream(file);
                 int ch = fis.read(bytes, 0, Constants.RESPONSE_BUFFER_SIZE);

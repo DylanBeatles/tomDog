@@ -7,7 +7,7 @@ import java.io.OutputStream;
 
 import model.constant.Constants;
 import model.request.HttpRequest;
-import server.HttpServer;
+import server.BootStrap;
 
 /*
   HTTP Response = Status-Line
