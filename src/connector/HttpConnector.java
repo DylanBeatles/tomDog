@@ -1,4 +1,4 @@
-package server;
+package connector;
 
 import java.io.IOException;
 import java.net.InetAddress;
@@ -10,26 +10,18 @@ import model.request.HttpRequest;
 import model.response.HttpResponse;
 import parser.RequestParser;
 
-public class BootStrap {
-
-    // shutdown command
-    private static final String SHUTDOWN_COMMAND = "/SHUTDOWN";
-
+public class HttpConnector implements Runnable {
     // the shutdown command received
     private boolean             shutdown         = false;
 
-    public static void main(String[] args) {
-        BootStrap bootStrap = new BootStrap();
-        bootStrap.await();
-    }
-
-    public void await() {
-        ServerSocket serverSocket = obtainServerSocket();
+	@Override
+	public void run() {
+		ServerSocket serverSocket = obtainServerSocket();
 
         serve(serverSocket);
-    }
-
-    /**
+	}
+	
+	 /**
      * 开始服务
      * 
      * @param serverSocket
@@ -40,7 +32,7 @@ public class BootStrap {
             Socket socket = null;
             try {
                 socket = serverSocket.accept();
-
+                
                 HttpRequest request = RequestParser.getInstance().parseRequest(
                     socket.getInputStream());
 
@@ -49,7 +41,7 @@ public class BootStrap {
                 socket.close();
 
                 //check if the previous URI is a shutdown command
-                shutdown = request.getUri().equals(SHUTDOWN_COMMAND);
+                shutdown = request.getUri().equals(Constants.SHUTDOWN_COMMAND);
             } catch (Exception e) {
                 e.printStackTrace();
                 continue;
@@ -92,4 +84,5 @@ public class BootStrap {
         }
         return serverSocket;
     }
+
 }
