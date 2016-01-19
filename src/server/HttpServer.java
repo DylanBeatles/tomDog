@@ -6,10 +6,10 @@ import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import request.HttpRequest;
-import response.HttpResponse;
-import connector.RequestParser;
-import constant.Constants;
+import model.constant.Constants;
+import model.request.HttpRequest;
+import model.response.HttpResponse;
+import parser.RequestParser;
 
 public class HttpServer {
 
