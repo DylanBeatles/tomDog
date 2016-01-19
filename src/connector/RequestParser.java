@@ -7,10 +7,11 @@ package connector;
 import java.io.IOException;
 import java.io.InputStream;
 
-import request.HttpRequest;
-import request.HttpRequestFactory;
-import request.OriginalRequestData;
-import constant.Constants;
+import model.constant.Constants;
+import model.request.HttpRequest;
+import model.request.HttpRequestFactory;
+import model.request.OriginalRequestData;
+
 
 /**
  * Request½âÎöÆ÷
