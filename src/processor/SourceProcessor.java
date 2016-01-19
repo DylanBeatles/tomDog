@@ -17,6 +17,7 @@ public interface SourceProcessor {
      * ¥¶¿Ìhttp«Î«Û
      * 
      * @param request
+     * @throws Exception 
      */
-    public void process(HttpRequest request, HttpResponse response);
+    public void process(HttpRequest request, HttpResponse response) throws Exception;
 }

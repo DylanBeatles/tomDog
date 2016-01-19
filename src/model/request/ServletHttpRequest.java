@@ -6,6 +6,7 @@ package model.request;
 
 import java.io.InputStream;
 
+import processor.ServletSourceProcessor;
 import processor.SourceProcessor;
 
 /**
@@ -28,7 +29,7 @@ public class ServletHttpRequest extends HttpRequest {
      */
     @Override
     public SourceProcessor getSourceProcessor() {
-        return null;
+        return new ServletSourceProcessor();
     }
 
 }

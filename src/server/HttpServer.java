@@ -1,6 +1,5 @@
 package server;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
@@ -12,15 +11,6 @@ import model.response.HttpResponse;
 import parser.RequestParser;
 
 public class HttpServer {
-
-    /** WEB_ROOT is the directory where our HTML and other files reside.
-     *  For this package, WEB_ROOT is the "webroot" directory under the working
-     *  directory.
-     *  The working directory is the location in the file system
-     *  from where the java command was invoked.
-     */
-    public static final String  WEB_ROOT         = System.getProperty("user.dir") + File.separator
-                                                   + "webroot";
 
     // shutdown command
     private static final String SHUTDOWN_COMMAND = "/SHUTDOWN";
@@ -51,7 +41,8 @@ public class HttpServer {
             try {
                 socket = serverSocket.accept();
 
-                HttpRequest request = RequestParser.getInstance().parseRequest(socket.getInputStream());
+                HttpRequest request = RequestParser.getInstance().parseRequest(
+                    socket.getInputStream());
 
                 createAndSetResponse(socket, request);
 
@@ -76,8 +67,12 @@ public class HttpServer {
     private void createAndSetResponse(Socket socket, HttpRequest request) throws IOException {
         // create Response object
         HttpResponse response = new HttpResponse(request, socket.getOutputStream());
-        
-        request.getSourceProcessor().process(request, response);
+
+        try {
+            request.getSourceProcessor().process(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**

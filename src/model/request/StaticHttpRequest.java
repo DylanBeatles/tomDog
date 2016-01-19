@@ -3,6 +3,7 @@ package model.request;
 import java.io.InputStream;
 
 import processor.SourceProcessor;
+import processor.StaticSourceProcessor;
 
 public class StaticHttpRequest extends HttpRequest {
 
@@ -19,7 +20,7 @@ public class StaticHttpRequest extends HttpRequest {
      */
     @Override
     public SourceProcessor getSourceProcessor() {
-        return null;
+        return new StaticSourceProcessor();
     }
 
 }

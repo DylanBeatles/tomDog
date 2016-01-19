@@ -20,7 +20,7 @@ public class HttpRequestFactory {
         HttpRequest request;
 
         if (StringUtil.isNotEmpty(requestedUri)
-            && StringUtil.contains(requestedUri, Constants.SERCLET_REQUEST_FLAG)) {
+            && !StringUtil.contains(requestedUri, Constants.SERCLET_REQUEST_FLAG)) {
             request = new StaticHttpRequest(inputStream, requestedUri);
         } else {
             request = new ServletHttpRequest(inputStream, requestedUri);
