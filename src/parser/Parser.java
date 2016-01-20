@@ -18,8 +18,8 @@ import model.request.OriginalRequestData;
  * @author wb-zhanglu.y
  * @version $Id: UriParser.java, v 0.1 Jan 18, 2016 2:58:53 PM wb-zhanglu.y Exp $
  */
-public class RequestParser {
-    private static RequestParser instance = new RequestParser();
+public class Parser {
+    private static Parser instance = new Parser();
 
     /**
      * 根据输入流创建http请求的领域模型对象
@@ -34,15 +34,15 @@ public class RequestParser {
         return HttpRequestFactory.createHttpRequest(inputStream, uri);
     }
 
-    public static RequestParser getInstance() {
+    public static Parser getInstance() {
         if (instance == null) {
-            instance = new RequestParser();
+            instance = new Parser();
         }
         return instance;
 
     }
 
-    private RequestParser() {
+    private Parser() {
     }
 
     /**

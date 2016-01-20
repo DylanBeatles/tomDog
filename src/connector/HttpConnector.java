@@ -8,7 +8,7 @@ import java.net.Socket;
 import model.constant.Constants;
 import model.request.HttpRequest;
 import model.response.HttpResponse;
-import parser.RequestParser;
+import parser.Parser;
 
 public class HttpConnector implements Runnable {
     // the shutdown command received
@@ -33,7 +33,7 @@ public class HttpConnector implements Runnable {
             try {
                 socket = serverSocket.accept();
                 
-                HttpRequest request = RequestParser.getInstance().parseRequest(
+                HttpRequest request = Parser.getInstance().parseRequest(
                     socket.getInputStream());
 
                 createAndSetResponse(socket, request);
